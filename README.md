@@ -5,7 +5,7 @@
      alt="Reflets" width="150" height="150">
 
 
-<div style="text-align: justify">Voici le projet <a href='https://github.com/DavidAdmete/Reflets'>reflets optimisation</a> pensé pour tourner sur l'environnment BSPP.
+<div style="text-align: justify">Voici le projet reflets optimisation</a> pensé pour tourner sur l'environnment BSPP.
 
 Acutellement le projet est encore WIP.
 
