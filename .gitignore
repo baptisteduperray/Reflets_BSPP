@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.log
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.nbconvert.ipynb
+
+# VS Code
+.vscode/
+.history/
+
+# Data files
+*.xlsx
+*.h5
+*.db
+*.sqlite
+
+# Environnements virtuels
+.env/
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Variables d'environnement
+.env
+
+euclid.ipynb
+cs_grpt.json
+datas/utils/cs.csv
+datas/utils/liste_engins.csv
+datas/utils/liste_engins_old.csv
+datas/utils/new_aff.csv
+datas/interventions/inter_23_complet.csv
+datas/interventions/inter_23.csv
+datas/interventions/inter_23_modifie_bkp.csv
+datas/interventions/correspondance_inter.csv
+marimo_test.py
+adaptative_weight.pkl
+adaptative_weight_low_value_400.pkl
+courbes_trajets_superposees_frequence.png
+distribution_temps_trajet.png
+hist_trajets_cs_eq_cstc.png
+hist_trajets_cs_neq_cstc.png
+df_total_brute.csv
+__marimo__

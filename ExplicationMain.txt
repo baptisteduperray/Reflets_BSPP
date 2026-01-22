@@ -1,0 +1,31 @@
+4 fichiers:
+	- main
+	- data
+	- classes
+	- filtres
+
+Main: a vocation a n’avoir que deux fonctions:
+	- main() qui lance la boucle for intervention in interventions
+	- attribuer qui decide quel engin envoyer pour l’intervention donnée
+
+	- elle a une troisième qui s’occupe de récupérer les stats
+
+Data: data et filtres sont les seuls à connaître la structure de données, c’est-à-dire, c’est les seuls qui connaissent le format des données en input. Elle s’occupe de deux choses:
+	- lire les données et les mettre dans un dictionnaire contenant des instances indexés par le champ nommé toujours id pour:
+		- engins
+		- interventions
+		- secteurs
+	ceux-là sont utilises dans main
+
+	- mettre le dataframe dans la variable de classe global
+
+Classes: contient toutes les classes : Engin, Intervention, Secteur.
+	- Secteur: dataclass
+	- Intervention: dataclass
+	- Engin: c’est là que tous les calculs se font: 
+		- il est capable de savoir s’il est disponible
+		- de calculer le temps de trajet
+		- des distances euclidiennes au carré.
+Filtres: ce fichier naît de la volonté de laisser main agnostique du système de donnés utilisé. Ainsi, elle contient deux fonctions nécessaires au fonctionnement de main. 
+
+
