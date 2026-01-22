@@ -7,7 +7,7 @@
 
 <div style="text-align: justify">Voici le projet reflets optimisation</a> pensé pour tourner sur l'environnment BSPP.
 
-Acutellement le projet est encore WIP.
+Actuellement le projet est encore WIP.
 
 Aujourd'hui il utilise marimo pour avoir un environnement propre et une première interface facile à mettre en place.
 
