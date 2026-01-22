@@ -11,7 +11,7 @@ Acutellement le projet est encore WIP.
 
 Aujourd'hui il utilise marimo pour avoir un environnement propre et une première interface facile à mettre en place.
 
-Le temps de simulation est d'environ 0.6 s par jour simulé, et fait preuve d'une grande fiabilité.
+Le temps de simulation est d'environ 0.6 s par jour simulé, et le simulateur fait preuve d'une grande fiabilité.
 
 
 
