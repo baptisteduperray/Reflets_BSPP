@@ -13,7 +13,6 @@ Aujourd'hui il utilise marimo pour avoir un environnement propre et une premièr
 
 Le temps de simulation est d'environ 0.6 s par jour simulé, et le simulateur fait preuve d'une grande fiabilité.
 
-
-
+Le code necessite des données d'interventions pour fonctionner, non présente dans la version ici présente du code. 
  
 
