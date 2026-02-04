@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import joblib
 
-df_temps_caserne_inter = pd.read_csv("df_total_brute.csv")
+df_temps_caserne_inter = pd.read_csv("datas/interventions/df_total_brute.csv")
 
 modele = joblib.load("adaptative_weight.pkl")
 model_low= joblib.load("adaptative_weight_low_value_400.pkl")

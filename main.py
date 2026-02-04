@@ -52,13 +52,88 @@ def ajouter_intervention_statistiques(
 # MAIN
 # -----------------------------------------------------------------------------
 
+<<<<<<< HEAD
 def main():
     interventions, secteurs, engins = get_data()
 
+=======
+
+def main(df_interventions=None, crisis=False, simulation_start=None, simulation_end=None):
+    """Run simulation.
+
+    Parameters:
+    - df_interventions: optional pandas.DataFrame of interventions (unused currently)
+    - crisis: bool, run crisis mode (unused currently)
+    - simulation_start, simulation_end: optional datetimes indicating simulation window
+    """
+    # Note: currently the simulation core reads interventions via get_data().
+    # We accept optional parameters for compatibility and future use.
+    if simulation_start is not None or simulation_end is not None:
+        print(f"Simulation window: {simulation_start} -> {simulation_end}")
+
+    interventions, secteurs, engins = get_data()
+
+    # If a DataFrame of interventions is provided (from uploader), convert it
+    # to the internal list[Intervention] format. We handle common column names
+    # and try to be robust to missing columns.
+    if df_interventions is not None:
+        try:
+            df = df_interventions.copy()
+            # ensure date column is datetime
+            if "date" in df.columns:
+                df["date"] = pd.to_datetime(df["date"])
+            elif "selection" in df.columns:
+                df["date"] = pd.to_datetime(df["selection"])
+
+            # ensure numeric time columns exist
+            for col in ["retour", "traitement", "trajet", "depart"]:
+                if col in df.columns:
+                    df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0)
+
+            # Build Intervention objects
+            interventions = []
+            for i, row in df.iterrows():
+                try:
+                    inter_date = row.get("date")
+                    if pd.isna(inter_date):
+                        inter_date = pd.Timestamp.now()
+                    inter = Intervention(
+                        proc=row.get("proc", None),
+                        id=row.get("id", i),
+                        x=float(row.get("x", 0)),
+                        y=float(row.get("y", 0)),
+                        x_final=float(row.get("x_final", row.get("x", 0))),
+                        y_final=float(row.get("y_final", row.get("y", 0))),
+                        retour=datetime.timedelta(seconds=float(row.get("retour", 0))),
+                        date=pd.to_datetime(inter_date).to_pydatetime(),
+                        traitement=datetime.timedelta(seconds=float(row.get("traitement", 0))),
+                        trajet=datetime.timedelta(seconds=float(row.get("trajet", 0))),
+                        fem_mma=row.get("fem_mma", ""),
+                        cstc=row.get("cstc", ""),
+                    )
+                    interventions.append(inter)
+                except Exception:
+                    # skip malformed row
+                    continue
+        except Exception:
+            # If conversion fails, keep interventions from get_data()
+            pass
+
+    for _, engin in engins.items():
+        secteurs[engin.cs].add_engin(engin)
+
+>>>>>>> d9bb29a (Sauvegarde avant pull)
     i = 0
     print_every = 1000
 
     for intervention in interventions:
+        # Filter by simulation window if provided
+        if simulation_start is not None and isinstance(simulation_start, datetime.datetime):
+            if intervention.date < simulation_start:
+                continue
+        if simulation_end is not None and isinstance(simulation_end, datetime.datetime):
+            if intervention.date > simulation_end:
+                continue
         if intervention.cstc == "NR":
             print("Intervention avec cstc NR")
             continue
